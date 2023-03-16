@@ -1,0 +1,78 @@
+#CONFIG FILE - CRACKLEII Pipeline v1.3
+
+#Site specific details
+SITE="Hanson_Lab"
+LIBRARY_PREP="NexteraFlex"
+
+#Pipeline details
+VERSION=1.3
+DATE=`date +%Y-%m-%d`
+
+#Program and script paths
+PIPELINE_PATH=/app
+
+RASPBERRY_PATH=${PIPELINE_PATH}/programs/Raspberry-0.3/bin/raspberry
+TRIMMOMATIC_PATH=${PIPELINE_PATH}/programs/Trimmomatic-0.39/trimmomatic-0.39.jar
+STRAINSEEKER_PATH=${PIPELINE_PATH}/programs/strainseeker/seeker.pl
+SPADES_PATH=${PIPELINE_PATH}/programs/SPAdes-3.15.2-Linux/bin/spades.py
+REMOVESMALLS_PATH=${PIPELINE_PATH}/filter_fasta.py
+QUAST_PATH=${PIPELINE_PATH}/programs/quast-5.2.0/quast.py
+MLST_PATH=${PIPELINE_PATH}/programs/mlst-2.19.0/bin/mlst
+BLAST_PATH=${PIPELINE_PATH}/programs/ncbi-blast-2.10.1+/bin
+KLEBORATE_PATH=${PIPELINE_PATH}/programs/Kleborate-2.0.4/kleborate-runner.py
+ABRICATE_PATH=${PIPELINE_PATH}/programs/abricate-1.0.1/bin/abricate
+EMBOSS_PATH=${PIPELINE_PATH}/programs/EMBOSS-6.6.0/emboss/tmp/bin
+BOWTIE2_PATH=${PIPELINE_PATH}/programs/bowtie2-2.4.1-linux-x86_64/
+SAMTOOLS_PATH=${PIPELINE_PATH}/programs/samtools-1.10/samtools
+BCFTOOLS_PATH=${PIPELINE_PATH}/programs/bcftools-1.10.2
+SEQTK_PATH=${PIPELINE_PATH}/programs/seqtk-1.3/seqtk
+ANY2FASTA_PATH=${PIPELINE_PATH}/programs/any2fasta-0.4.2
+MASH_PATH=${PIPELINE_PATH}/programs/mash-Linux64-v2.2
+
+XML_GENERATOR_PATH=${PIPELINE_PATH}/XML_generator.R
+XMLTOGENEHITLIST=${PIPELINE_PATH}/XML_to_gene_hit_list.R
+XML_SHORTREAD_PATH=${PIPELINE_PATH}/XML_ShortRead.R
+
+#Database paths
+ILLUMINAADAPTERS=${PIPELINE_PATH}/programs/Trimmomatic-0.39/adapters
+STRAINSEEKERDB=${PIPELINE_PATH}/programs/strainseeker/ss_db_w32_4324
+RASPBERRY_DUMMY=${PIPELINE_PATH}/db/raspberry_dummy.txt
+
+#Resistance database list document paths
+CARDLIST=${PIPELINE_PATH}/resistanceLists/card_db.tsv
+PLASMIDLIST=${PIPELINE_PATH}/resistanceLists/plasmidfinder_db.tsv
+INHOUSELIST=${PIPELINE_PATH}/resistanceLists/in_house_db.tsv
+
+###Program specific parameters
+###The following section of the config file set specific parameters used for 
+###different programs within this pipeline. Each program will be identified
+###and specific details are included 
+
+#Trimmomatic - please specify the library prep kit used (assumes paired end)
+#Nextera Paired End:
+ADAPTER=NexteraPE-PE.fa
+#TruSeq Paired End:
+#ADAPTER=TruSeq3-PE-2.fa
+
+#Trimmomatic - other parameters. Each set to default from trimmomatic
+#Parameter for illumina read clipping
+CLIPPING=2:30:10
+#Remove leading low quality bases below defined quality score
+LEADING=3
+#Remove trailing low quality bases below defined quality score
+TRAILING=3
+#Define the sliding window size and average quality score for trimming
+WINDOW=4:15
+#Set minimum length for reads following trimming
+MIN=36
+
+#Removal of small contigs following assembly (default is 500 bases)
+MINCONTIG=500
+
+#Abricate - setting minimum ID % and minimum coverage % for a match
+#Minimum ID (pipeline default is 95% ID, use 95)
+MINID=95
+#Minimum coverage (pipeline default is to include everything, use 0)
+MINCOV=0
+
+

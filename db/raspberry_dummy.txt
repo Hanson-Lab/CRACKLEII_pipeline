@@ -1,0 +1,16 @@
+File name : assembly_only
+Total bases : 400000000
+Total reads : 0
+% bases >=Q20 : 0
+% bases >=Q30 : 0
+Average read length : 0
+Read length range : 0
+Quality range : 0
+Phred range : 0
+Offset : 0
+A : 0
+T : 0
+G : 0
+C : 0
+N : 0
+percent G-C content : 0
